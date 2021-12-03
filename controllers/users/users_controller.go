@@ -21,7 +21,7 @@ func CreateUser(c *gin.Context) {
 	bytes, err := ioutil.ReadAll(c.Request.Body)
 	fmt.Println(err)
 	fmt.Println(string(bytes))
-	c.String(http.StatusNotImplemented, "implement me!")
+	c.String(http.StatusNotImplemented, "implemented.")
 }
 
 func GetUser(c *gin.Context) {
