@@ -6,8 +6,20 @@ package controllers
 
 // application and controllers are the only layers that should interact with the server
 
-func GetUser() {}
+import (
+	"net/http"
 
-func CreateUser() {}
+	"github.com/gin-gonic/gin"
+)
 
-func FindUser() {}
+func GetUser(c *gin.Context) {
+	c.String(http.StatusNotImplemented, "implement me!")
+}
+
+func CreateUser(c *gin.Context) {
+	c.String(http.StatusNotImplemented, "implement me!")
+}
+
+func SearchUser(c *gin.Context) {
+	c.String(http.StatusNotImplemented, "implement me!")
+}
