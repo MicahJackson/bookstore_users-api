@@ -1,4 +1,4 @@
-package controllers
+package users
 
 // controller is for validating that we have all of the necessary parameters to handle the service request
 // functions are the entry point of our application
