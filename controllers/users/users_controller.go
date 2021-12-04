@@ -19,11 +19,10 @@ import (
 
 func CreateUser(c *gin.Context) {
 	var user dusers.User
-	fmt.Println(user)
-	fmt.Println("1")
 	bytes, err := ioutil.ReadAll(c.Request.Body)
 	if err != nil {
 		fmt.Println("2")
+		fmt.Println(err.Error())
 		//TODO: Handle Error
 		return
 	}
