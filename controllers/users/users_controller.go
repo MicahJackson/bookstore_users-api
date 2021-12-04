@@ -7,11 +7,10 @@ package users
 // application and controllers are the only layers that should interact with the server
 
 import (
-	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"net/http"
 
+	"example.go/github.com/micahjackson/bookstore_users-api/utils/errors"
 	"github.com/gin-gonic/gin"
 	"github.com/micahjackson/bookstore_users-api/domain/dusers"
 	"github.com/micahjackson/bookstore_users-api/services"
@@ -19,17 +18,15 @@ import (
 
 func CreateUser(c *gin.Context) {
 	var user dusers.User
-	bytes, err := ioutil.ReadAll(c.Request.Body)
-	if err != nil {
-		fmt.Println("2")
-		fmt.Println(err.Error())
-		//TODO: Handle Error
-		return
-	}
-	if err := json.Unmarshal(bytes, &user); err != nil {
-		fmt.Println("3")
-		fmt.Println(err.Error())
-		//TODO: Handle json error
+
+	if err := c.ShouldBindJSON(&user); err != nil {
+		restErr := errors.RestErr{
+			Message: "invalid json body",
+			Status:  http.StatusBadRequest,
+			Error:   "bad_request",
+		}
+		c.JSON(restErr.Status, restErr)
+		//TODO: return bad request to the caller.
 		return
 	}
 
