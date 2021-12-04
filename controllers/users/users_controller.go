@@ -19,17 +19,21 @@ import (
 func CreateUser(c *gin.Context) {
 	var user dusers.User
 	fmt.Println(user)
+	fmt.Println("1")
 	bytes, err := ioutil.ReadAll(c.Request.Body)
 	if err != nil {
+		fmt.Println("2")
 		//TODO: Handle Error
 		return
 	}
 	if err := json.Unmarshal(bytes, &user); err != nil {
+		fmt.Println("3")
 		fmt.Println(err.Error())
 		//TODO: Handle json error
 		return
 	}
 	fmt.Println(user)
+	fmt.Println("4")
 	c.String(http.StatusNotImplemented, "implemented.")
 }
 
