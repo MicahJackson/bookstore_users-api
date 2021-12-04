@@ -7,7 +7,6 @@ package users
 // application and controllers are the only layers that should interact with the server
 
 import (
-	"fmt"
 	"net/http"
 
 	"example.go/github.com/micahjackson/bookstore_users-api/utils/errors"
@@ -20,23 +19,18 @@ func CreateUser(c *gin.Context) {
 	var user dusers.User
 
 	if err := c.ShouldBindJSON(&user); err != nil {
-		restErr := errors.RestErr{
-			Message: "invalid json body",
-			Status:  http.StatusBadRequest,
-			Error:   "bad_request",
-		}
+		restErr := errors.NewBadRequestError("invalid json body")
 		c.JSON(restErr.Status, restErr)
-		//TODO: return bad request to the caller.
+		// return bad request to the caller.
 		return
 	}
 
 	result, saveErr := services.CreateUser(user)
 	if saveErr != nil {
-		//TODO: handle user creation errorf
+		c.JSON(saveErr.Status, saveErr)
 		return
 	}
 	c.JSON(http.StatusCreated, result)
-	fmt.Println("works")
 }
 
 func GetUser(c *gin.Context) {
