@@ -21,9 +21,7 @@ func CreateUser(c *gin.Context) {
 	fmt.Println(user)
 	bytes, err := ioutil.ReadAll(c.Request.Body)
 	if err != nil {
-		//TODO: Handle err.Error()
-		fmt.Println("body readAll error")
-		fmt.Println(err.Error())
+		//TODO: Handle Error
 		return
 	}
 	if err := json.Unmarshal(bytes, &user); err != nil {
