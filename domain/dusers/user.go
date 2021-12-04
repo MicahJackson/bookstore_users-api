@@ -1,4 +1,4 @@
-package users
+package dusers
 
 type User struct {
 	Id          int64

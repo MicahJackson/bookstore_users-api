@@ -12,11 +12,11 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/micahjackson/bookstore_users-api/domain/users"
+	"github.com/micahjackson/bookstore_users-api/domain/dusers"
 )
 
 func CreateUser(c *gin.Context) {
-	var user users.User
+	var user dusers.User
 	fmt.Println(user)
 	bytes, err := ioutil.ReadAll(c.Request.Body)
 	fmt.Println(string(bytes))
