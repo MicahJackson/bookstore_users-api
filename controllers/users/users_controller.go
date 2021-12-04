@@ -39,9 +39,8 @@ func CreateUser(c *gin.Context) {
 		//TODO: handle user creation errorf
 		return
 	}
-	// fmt.Println(user)
-	// fmt.Println("4")
 	c.JSON(http.StatusCreated, result)
+	fmt.Println("works")
 }
 
 func GetUser(c *gin.Context) {
