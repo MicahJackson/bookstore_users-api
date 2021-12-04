@@ -19,13 +19,13 @@ func CreateUser(c *gin.Context) {
 	var user users.User
 	fmt.Println(user)
 	bytes, err := ioutil.ReadAll(c.Request.Body)
-	fmt.Println(err)
 	fmt.Println(string(bytes))
+	fmt.Println(err)
 	c.String(http.StatusNotImplemented, "implemented.")
 }
 
 func GetUser(c *gin.Context) {
-	c.String(http.StatusNotImplemented, "implement me!")
+	c.String(http.StatusNotImplemented, "still not implemented")
 }
 
 // func SearchUser(c *gin.Context) {
