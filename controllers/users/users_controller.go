@@ -9,10 +9,10 @@ package users
 import (
 	"net/http"
 
-	"example.go/github.com/micahjackson/bookstore_users-api/utils/errors"
 	"github.com/gin-gonic/gin"
 	"github.com/micahjackson/bookstore_users-api/domain/dusers"
 	"github.com/micahjackson/bookstore_users-api/services"
+	"github.com/micahjackson/bookstore_users-api/utils/errors"
 )
 
 func CreateUser(c *gin.Context) {
