@@ -7,6 +7,7 @@ package users
 // application and controllers are the only layers that should interact with the server
 
 import (
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -19,8 +20,18 @@ func CreateUser(c *gin.Context) {
 	var user dusers.User
 	fmt.Println(user)
 	bytes, err := ioutil.ReadAll(c.Request.Body)
-	fmt.Println(string(bytes))
-	fmt.Println(err)
+	if err != nil {
+		//TODO: Handle err.Error()
+		fmt.Println("body readAll error")
+		fmt.Println(err.Error())
+		return
+	}
+	if err := json.Unmarshal(bytes, &user); err != nil {
+		fmt.Println(err.Error())
+		//TODO: Handle json error
+		return
+	}
+	fmt.Println(user)
 	c.String(http.StatusNotImplemented, "implemented.")
 }
 
