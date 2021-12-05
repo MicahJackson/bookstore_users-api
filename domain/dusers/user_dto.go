@@ -1,5 +1,9 @@
 package dusers
 
+// dto is the object(s) we are transferring from the controllers to the persistence layer/database
+// this file defines the dto(s)
+// the dto file SHOULD NOT CONTAIN ANY CALLS TO THE DATABASE(S)
+
 import (
 	"strings"
 
