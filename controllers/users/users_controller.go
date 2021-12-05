@@ -15,7 +15,7 @@ import (
 	"github.com/micahjackson/bookstore_users-api/utils/errors"
 )
 
-func CreateUser(c *gin.Context) {
+func CreateUser(c *gin.Context) { // context in this case is the data behind -d {} that we're sending with the request
 	var user dusers.User
 
 	if err := c.ShouldBindJSON(&user); err != nil {
