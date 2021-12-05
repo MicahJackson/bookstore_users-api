@@ -16,8 +16,9 @@ func CreateUser(user dusers.User) (*dusers.User, *errors.RestErr) {
 	}
 
 	if err := user.Save(); err != nil {
-		fmt.Println(err)
 		return nil, err
 	}
+
+	fmt.Println("successful save")
 	return &user, nil
 }
